@@ -73,4 +73,17 @@ class UsersController extends Controller {
         }
     }
 
+    public function updatePassword(UserRequest $request, User $user) {
+        try {
+            $user->password = $request->password;
+
+            $user = tap($user)->save();
+            $user = new UserListResource($user);
+
+            return $this->resolve("res.users.update-password.success", compact("user"));
+        } catch (Exception $ex) {
+            return $this->reject($ex, "res.users.update-password.failed");
+        }
+    }
+
 }

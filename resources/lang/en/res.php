@@ -36,5 +36,9 @@ return [
             'success' => "Successfully deleted user",
             'failed'  => "Unable to delete user",
         ],
+        'update-password' => [
+            'success' => 'Successfully updated user\'s password',
+            'failed'  => 'Unable to update user\'s password',
+        ],
     ],
 ];

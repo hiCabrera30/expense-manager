@@ -3,6 +3,7 @@
 namespace App\Rules\Users;
 
 use App\Exceptions\PreciseException;
+use App\Models\Users\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Validation\Rule;
@@ -30,13 +31,10 @@ class MustMatchCurrentPasswordRule implements Rule {
      * @return bool
      */
     public function passes($attribute, $value) {
-        $user = session("auth_user") ?: auth("api")->user();
+        $userId = auth()->id();
+        $user = User::findOrFail($userId);
 
-        if ($user == null) {
-            abort(401);
-        }
-
-        return $this->userId != $user->id
+        return $this->userId != $userId
             || Hash::check($value, $user->password);
     }
 

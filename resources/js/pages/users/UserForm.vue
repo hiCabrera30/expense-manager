@@ -68,7 +68,7 @@ export default {
 
         show(user) {
             this.initialize(user);
-            this.modalShown = true;
+            this.$refs.modal.open();
             this.editable = false;
         },
 

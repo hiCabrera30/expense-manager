@@ -6930,6 +6930,7 @@ var LoginForm = function LoginForm() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ChangePasswordForm": () => (/* reexport safe */ _users__WEBPACK_IMPORTED_MODULE_1__.ChangePasswordForm),
 /* harmony export */   "CreateUserForm": () => (/* reexport safe */ _users__WEBPACK_IMPORTED_MODULE_1__.CreateUserForm),
 /* harmony export */   "LoginForm": () => (/* reexport safe */ _auth__WEBPACK_IMPORTED_MODULE_0__.LoginForm),
 /* harmony export */   "UserForm": () => (/* reexport safe */ _users__WEBPACK_IMPORTED_MODULE_1__.UserForm)
@@ -6950,6 +6951,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ChangePasswordForm": () => (/* binding */ ChangePasswordForm),
 /* harmony export */   "CreateUserForm": () => (/* binding */ CreateUserForm),
 /* harmony export */   "UserForm": () => (/* binding */ UserForm)
 /* harmony export */ });
@@ -6958,6 +6960,9 @@ var UserForm = function UserForm() {
 };
 var CreateUserForm = function CreateUserForm() {
   return __webpack_require__.e(/*! import() | users */ "users").then(__webpack_require__.bind(__webpack_require__, /*! ./CreateUserForm.vue */ "./resources/js/pages/users/CreateUserForm.vue"));
+};
+var ChangePasswordForm = function ChangePasswordForm() {
+  return __webpack_require__.e(/*! import() | users */ "users").then(__webpack_require__.bind(__webpack_require__, /*! ./ChangePasswordForm.vue */ "./resources/js/pages/users/ChangePasswordForm.vue"));
 };
 
 /***/ }),

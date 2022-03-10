@@ -33,16 +33,17 @@ Route::group(["middleware" => ["auth"]], function () {
     Route::name("dashboard.index")->get('/', [DashboardController::class, 'index']);
 
 
-
     Route::resource('admins', AdminsController::class)
         ->only(["index"]);
 
     Route::resource('general-users', GeneralUsersController::class)
         ->only(["index"]);
-    
-        Route::name('api')
-            ->resource('users', UsersController::class)
-            ->only(["index", "store", "update", "destroy"]);
+        
+        
+    Route::name("api.users.update-password")->patch('users/{user}/password', [UsersController::class, 'updatePassword']);
+    Route::name('api')
+        ->resource('users', UsersController::class)
+        ->only(["index", "store", "update", "destroy"]);
     
 
 });
