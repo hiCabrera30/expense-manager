@@ -32,7 +32,7 @@ class UserRequest extends RestFormRequest {
     }
 
     protected function getPatchRules(): Array{
-        $userId = request()->id ?: auth()->id();
+        $userId = request()->id ?: session("auth_user")->id;
         return [ 
             'current_password' => [ new MustMatchCurrentPasswordRule($userId) ],
             'password' => [

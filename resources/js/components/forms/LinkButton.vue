@@ -17,7 +17,7 @@ export default {
         },
 
         isLink() {
-            return this.href && this.href != '#';
+            return this.route;
         },
 
         link() {
@@ -27,7 +27,7 @@ export default {
     methods: {
         click() {
             this.isLink
-                ? window.location = this.href
+                ? window.location = this.link
                 : bus.$emit(this.emit, this.params);
         },
     },

@@ -1,5 +1,5 @@
 <template>
-    <modal v-model="modalShown" :title="title" ref="modal" @hidden="modalShown = false" :small="false">
+    <div>
         <div class="mt-1">
             <div v-if="!editable" @click="toggleEdit" class="btn btn-link btn-sm text-blue float-right">
                 <i class="fa fa-edit"></i> Edit
@@ -25,10 +25,10 @@
                     ></form-input>
                 </div>
                 <div class="col-sm-12">
-                    <button v-if="!form.isRequesting" type="submit" class="btn btn-warning btn-rounded long float-right">
+                    <button v-if="!form.isRequesting" type="submit" class="btn btn-primary btn-rounded long float-right">
                         <i class="fa fa-save mr-1"></i> Save
                     </button>
-                    <button v-else disabled class="disabled btn btn-warning btn-rounded long float-right">
+                    <button v-else disabled class="disabled btn btn-primary btn-rounded long float-right">
                         <i class="fas fa-spin fa-spinner mr-2"></i> Please wait
                     </button>
                 </div>
@@ -38,11 +38,10 @@
             <labeled-data label="Email" :value="form.email"></labeled-data>
             <labeled-data label="Name" :value="form.name"></labeled-data>
         </div>
-    </modal>
+    </div>
 </template>
 
 <script>
-import { bus }  from 'src/utils/bus';
 import Form from 'models/components/Form';
 import { confirm, promptSuccess, promptFormErrors } from 'utils/prompts';
 
@@ -50,7 +49,6 @@ export default {
     name: 'UserForm',
 
     data: () => ({
-        modalShown: false,
         editable: false,
         form: new Form({
             id: '',
@@ -60,16 +58,10 @@ export default {
     }),
 
     methods: {
-        initialize(user) {
-            this.form.id = user.id;
-            this.form.email = user.email;
-            this.form.name = user.name;
-        },
-
-        show(user) {
-            this.initialize(user);
-            this.$refs.modal.open();
-            this.editable = false;
+        initialize() {
+            this.form.id = this.user.id;
+            this.form.email = this.user.email;
+            this.form.name = this.user.name;
         },
 
         toggleEdit() {
@@ -99,11 +91,11 @@ export default {
     },
 
     props: {
-        title: String,
+        user: Object,
     },
 
     mounted() {
-        bus.$on("users.show-profile", this.show);
+        this.initialize();
     }
 }
 </script>

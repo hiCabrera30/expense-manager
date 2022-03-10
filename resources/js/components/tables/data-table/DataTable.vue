@@ -197,7 +197,6 @@ export default {
 
         pageChanged(page){
             this.link = this.getFetchLink(page);
-            console.log(this.link);
             this.fetchData();
         },
 

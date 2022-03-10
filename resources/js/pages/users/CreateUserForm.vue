@@ -31,10 +31,10 @@
                     ></form-input>
                 </div>
                 <div class="col-sm-12">
-                    <button v-if="!form.isRequesting" type="submit" class="btn btn-warning btn-rounded long float-right">
+                    <button v-if="!form.isRequesting" type="submit" class="btn btn-primary btn-rounded long float-right">
                         <i class="fa fa-save mr-1"></i> Save
                     </button>
-                    <button v-else disabled class="disabled btn btn-warning btn-rounded long float-right">
+                    <button v-else disabled class="disabled btn btn-primary btn-rounded long float-right">
                         <i class="fas fa-spin fa-spinner mr-2"></i> Please wait
                     </button>
                 </div>
@@ -75,7 +75,7 @@ export default {
 
         show(user) {
             this.initialize(user);
-            this.modalShown = true;
+            this.$refs.modal.open();
         },
 
         async save() {

@@ -22,4 +22,8 @@ class GeneralUser extends User {
         return 'GeneralUser';
     }
 
+    public function getProfileLink() {
+        return route("general-users.show", session("auth_user")->id);
+    }
+
 }

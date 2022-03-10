@@ -1,11 +1,3 @@
-@push('style')
-    <style>
-        table td {
-            vertical-align: top;
-        }
-
-    </style>
-@endpush
 <paginated-table title="Admin list"
     fetch-link="{{ route('api.users.index', ["type" => "admin"]) }}"
     paginate-path="data.result.users">
@@ -19,16 +11,10 @@
         <td v-text="props.record.email"></td>
         <td class="text-center">
             <link-button
-                emit="users.show-profile"
-                :params="props.record"
+                route="admins.show"
+                :params="props.record.id"
                 class="btn btn-sm btn-dark btn-rounded m-1">
                 <i class="fa fa-eye"></i>
-            </link-button>
-            <link-button
-                emit="users.show-change-password"
-                :params="props.record.id"
-                class="btn btn-sm btn-warning btn-rounded m-1">
-                <i class="fa fa-lock"></i>
             </link-button>
             <request-button
                 route-name="api.users.destroy"
@@ -44,9 +30,7 @@
         </td>
     </template>
     <template slot="table-forms" slot-scope="props">
-        <user-form title="Admin info" @updated="props.table.refreshPage"></user-form>
         <create-user-form title="Register Admin" type="admin" @created="props.table.refreshPage"></create-user-form>
-        <change-password-form :current-user-id="{{ auth()->id() }}"></change-password-form>
         <div class="p-3">
             <link-button
                 emit="users.show-create"

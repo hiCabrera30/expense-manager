@@ -16,6 +16,7 @@
             :deselect-label="deselectLabel"
             :select-label="''"
             :multiple="multiple"
+            :disabled="disabled"
         >
             <template slot="singleLabel" slot-scope="{ option }">
                 <slot name="displayedValue" :option="option">

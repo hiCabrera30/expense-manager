@@ -31,10 +31,10 @@
                     ></form-input>
                 </div>
                 <div class="col-lg-12">
-                    <button v-if="!form.isRequesting" @click="save" type="submit" class="btn btn-warning btn-rounded long float-right">
+                    <button v-if="!form.isRequesting" @click="save" type="submit" class="btn btn-primary btn-rounded long float-right">
                         <i class="fa fa-save mr-1"></i> Save
                     </button>
-                    <button v-else disabled class="disabled btn btn-warning btn-rounded long float-right">
+                    <button v-else disabled class="disabled btn btn-primary btn-rounded long float-right">
                         <i class="fa fa-spinner fa-spin mr-2"></i> Please wait
                     </button>
                 </div>
@@ -87,7 +87,7 @@ export default {
         },
 
         async save() {
-            const isConfirmed = (await confirm("Are you sure you want to change this users' password?")).value;
+            const isConfirmed = (await confirm("Are you sure you want to change this user's password?")).value;
             if (!isConfirmed) return;
 
             const url = route('api.users.update-password', this.form.id);

@@ -14,14 +14,14 @@ export default {
                 value: {
                     "font-weight-bold": true,
                     "text-default": true,
-                    "text-sm": true,
+                    "text-sm": false,
                     "cursor-default": true,
                     "text-capitalize": this.capitalize,
                 },
                 emptyValue: {
                     "font-weight-bold": true,
                     "text-muted": true,
-                    "text-sm": true,
+                    "text-sm": false,
                     "cursor-default": true,
                     "text-capitalize": this.capitalize,
                 }

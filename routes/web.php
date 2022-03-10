@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Users\AdminsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExpenseCategoriesController;
+use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Users\GeneralUsersController;
 use App\Http\Controllers\Users\UsersController;
@@ -34,14 +36,48 @@ Route::group(["middleware" => ["auth"]], function () {
 
 
     Route::resource('admins', AdminsController::class)
-        ->only(["index"]);
+        ->middleware(["auth.role:admin"])
+        ->only(["index", "show"]);
 
-    Route::resource('general-users', GeneralUsersController::class)
-        ->only(["index"]);
-        
-        
-    Route::name("api.users.update-password")->patch('users/{user}/password', [UsersController::class, 'updatePassword']);
+    Route::name("general-users.show")
+        ->middleware(["auth.relation:generaluser,generalUser,id,id"])
+        ->get('general-users/{generalUser}', [GeneralUsersController::class, 'show']);
+    Route::name("general-users.index")->get('general-users/', [GeneralUsersController::class, 'index']);
+
+
+    Route::name("expenses.home")
+        ->get('expenses/home', [ExpensesController::class, 'home']);
     Route::name('api')
+        ->resource('expenses', ExpensesController::class)
+        ->only(["index", "store"]);
+    Route::name('api')
+        ->middleware(["auth.relation:generaluser,expense,user_id,id"])
+        ->resource('expenses', ExpensesController::class)
+        ->only(["update", "destroy"]);
+
+
+    Route::name("categories.show")
+        ->get('categories/{category}', [ExpenseCategoriesController::class, 'show']);
+    Route::name("api.categories.index")
+        ->get('categories', [ExpenseCategoriesController::class, 'index']);
+    Route::name('api')
+        ->middleware(["auth.relation:generaluser,expense,id,id"])
+        ->resource('categories', ExpenseCategoriesController::class)
+        ->only(["store", "update", "destroy"]);
+    
+        
+        
+    Route::name("api.users.update-password")
+        ->middleware([
+            "auth.role:admin|generaluser",
+            "auth.relation:generaluser,generalUser,id,id",
+        ])
+        ->patch('users/{user}/password', [UsersController::class, 'updatePassword']);
+    Route::name('api')
+        ->middleware([
+            "auth.role:admin|generaluser",
+            "auth.relation:generaluser,generalUser,id,id",
+        ])
         ->resource('users', UsersController::class)
         ->only(["index", "store", "update", "destroy"]);
     

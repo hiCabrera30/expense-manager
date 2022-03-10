@@ -61,4 +61,12 @@ class User extends Authenticatable {
     public function scopeExcept($query, $userID) {
         return $query->where("users.id", "!=", $userID);
     }
+
+    public function getProfileLink() {
+        return "#";
+    }
+
+    public function isRole($role) {
+        return strtolower(session("auth_user")->user_type) == $role;
+    }
 }

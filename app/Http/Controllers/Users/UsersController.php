@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
-use App\Http\Resources\Users\UserListResource;
+use App\Http\Resources\Users\UserResource;
 use App\Models\Users\Admin;
 use App\Models\Users\GeneralUser;
 use App\Models\Users\User;
@@ -17,9 +17,12 @@ class UsersController extends Controller {
     public function index(Request $request) {
         try {
             $users = $request->type == "admin"
-                ? Admin::except(auth()->id())
-                : GeneralUser::except(auth()->id());
-            $users = $this->paginateBuilder($users, UserListResource::class);
+                ? Admin::except(session("auth_user")->id)
+                : GeneralUser::except(session("auth_user")->id);
+
+            $users = $request->has('paginate') && $request->paginate == false
+                ? UserResource::collection($users->get())
+                : $this->paginateBuilder($users, UserResource::class);
 
             return $this->resolve('res.fetch.success', compact("users"));
         } catch (Exception $ex) {
@@ -34,7 +37,7 @@ class UsersController extends Controller {
                 ? Admin::create($request->getFormData())
                 : GeneralUser::create($request->getFormData());
 
-            $user = new UserListResource($user);
+            $user = new UserResource($user);
 
             DB::commit();
             return $this->resolve("res.{$request->type}s.create.success", compact("user"));
@@ -48,7 +51,7 @@ class UsersController extends Controller {
         DB::beginTransaction();
         try {
             $user = tap($user)->update($request->getFormData());
-            $user = new UserListResource($user);
+            $user = new UserResource($user);
 
             DB::commit();
             return $this->resolve('res.users.update.success', compact("user"));
@@ -60,12 +63,12 @@ class UsersController extends Controller {
 
     public function destroy(User $user) {
         try {
-            if ($user->id == auth()->id()) {
+            if ($user->id == session("auth_user")->id) {
                 throw new Exception("User cannot delete self");
             }
 
             $user = tap($user)->delete();
-            $user = new UserListResource($user);
+            $user = new UserResource($user);
 
             return $this->resolve('res.users.delete.success', compact("user"));
         } catch (Exception $ex) {
@@ -78,7 +81,7 @@ class UsersController extends Controller {
             $user->password = $request->password;
 
             $user = tap($user)->save();
-            $user = new UserListResource($user);
+            $user = new UserResource($user);
 
             return $this->resolve("res.users.update-password.success", compact("user"));
         } catch (Exception $ex) {

@@ -9,6 +9,34 @@ return [
         'success' => "Successfully validated data",
         'failed'  => "Unable to validate data",
     ],
+    'expense-categories'            => [
+        'create'            => [
+            'success' => "Successfully registered category",
+            'failed'  => "Unable to register category",
+        ],
+        'update'            => [
+            'success' => "Successfully updated category",
+            'failed'  => "Unable to update category",
+        ],
+        'delete'            => [
+            'success' => "Successfully deleted category",
+            'failed'  => "Unable to delete category",
+        ],
+    ],
+    'expenses'            => [
+        'create'            => [
+            'success' => "Successfully registered expense",
+            'failed'  => "Unable to register expense",
+        ],
+        'update'            => [
+            'success' => "Successfully updated expense",
+            'failed'  => "Unable to update expense",
+        ],
+        'delete'            => [
+            'success' => "Successfully deleted expense",
+            'failed'  => "Unable to delete expense",
+        ],
+    ],
     'admins'            => [
         'create'            => [
             'success' => "Successfully registered admin",

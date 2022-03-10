@@ -2,7 +2,6 @@
 
 namespace App\Models\Users;
 
-use App\Models\Shops\Shop;
 use App\Traits\Users\RoleTrait;
 
 class Admin extends User {
@@ -12,7 +11,7 @@ class Admin extends User {
     public static function getRoleId() {
         return 1;
     }
-    
+
     /**
      * Get the class name for polymorphic relations.
      *
@@ -22,5 +21,9 @@ class Admin extends User {
     public function getMorphClass() {
         return 'Admin';
     }
-    
+
+    public function getProfileLink() {
+        return route("admins.show", session("auth_user")->id);
+    }
+
 }

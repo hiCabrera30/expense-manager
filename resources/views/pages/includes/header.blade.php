@@ -6,24 +6,28 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Expense Categories</a>
+                    <a class="nav-link" href="{{ session("auth_user")->getProfileLink() }}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Expenses</a>
+                    <a class="nav-link" href="{{ route("expenses.home") }}">Expenses</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Users
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route("admins.index") }}">Admins</a>
-                        <a class="dropdown-item" href="{{ route("general-users.index") }}">General Users</a>
-                    </div>
-                </li>
+
+                @if (session("auth_user")->isRole("admin"))
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Users
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route("admins.index") }}">Admins</a>
+                            <a class="dropdown-item" href="{{ route("general-users.index") }}">General Users</a>
+                        </div>
+                    </li>
+                @endif
+
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="/logout">Logout</a>
                 </li>

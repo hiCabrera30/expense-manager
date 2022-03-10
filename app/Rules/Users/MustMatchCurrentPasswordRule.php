@@ -31,7 +31,7 @@ class MustMatchCurrentPasswordRule implements Rule {
      * @return bool
      */
     public function passes($attribute, $value) {
-        $userId = auth()->id();
+        $userId = session("auth_user")->id;
         $user = User::findOrFail($userId);
 
         return $this->userId != $userId

@@ -50,7 +50,7 @@
                         <div v-cloak class="row">
                             <div class="col">
                                 <div class="remember-me-wrapper mb-3">
-                                    <checkbox v-model="form.remember" :value="true" class="inline-block"></checkbox>
+                                    <checkbox v-model="form.remember" :value="true" style="display: inline;"></checkbox>
                                     <span class="remember-me-text">Remember me</span>
                                 </div>
                                 <button v-if="!form.isRequesting" type="submit" class="btn btn-primary btn-rounded long float-right">
