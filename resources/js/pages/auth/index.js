@@ -1,0 +1,1 @@
+export const LoginForm = () => import(/* webpackChunkName: "auth" */ './LoginForm.vue');
