@@ -15,8 +15,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Expenses</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Users
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route("admins.index") }}">Admins</a>
+                        <a class="dropdown-item" href="{{ route("general-users.index") }}">General Users</a>
+                    </div>
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Users</a>
+                    <a class="nav-link text-danger" href="/logout">Logout</a>
                 </li>
             </ul>
         </div>

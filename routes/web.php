@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Users\AdminsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Users\GeneralUsersController;
+use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +31,19 @@ Route::group(["middleware" => ["auth"]], function () {
     Route::name("auth.logout")->get('/logout', [LoginController::class, 'logout']);
 
     Route::name("dashboard.index")->get('/', [DashboardController::class, 'index']);
+
+
+
+    Route::resource('admins', AdminsController::class)
+        ->only(["index"]);
+
+    Route::resource('general-users', GeneralUsersController::class)
+        ->only(["index"]);
+    
+        Route::name('api')
+            ->resource('users', UsersController::class)
+            ->only(["index", "store", "update", "destroy"]);
+    
 
 });
 

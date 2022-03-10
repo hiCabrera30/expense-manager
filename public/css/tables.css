@@ -1,0 +1,151 @@
+
+.infinite-scroll-table {
+    max-height: 300px;
+    overflow: auto;
+}
+.infinite-scroll-table.long {
+    max-height: 375px;
+    overflow: auto;
+}
+#list-conatiner tr:not(:first-child) {
+    border-top: 1px solid #EEEEEE;
+}
+
+
+/**
+* Data Tables
+*/
+
+.table-component {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 2px 2px;
+    background-color: #F7F7F7;
+    overflow-x: hidden;
+    border-radius: 4px;
+}
+.table-component .table-toolbar {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 1px;
+    background-color: #FFF;
+    padding: 5px 24px;
+}
+.table-component .table-toolbar .table-toolbar-item {
+    background-color: transparent;
+    color: #8898AA;
+    padding: 5px;
+    display: inline-block;
+    border: none;
+    outline: none;
+}
+.table-component .table-toolbar .table-toolbar-search-icon {
+    background-color: transparent;
+    color: #8898AA;
+    padding: 5px;
+    width: 26px;
+    display: inline-block;
+    outline: none;
+}
+.table-component .table-toolbar .table-toolbar-search-field {
+    background-color: transparent;
+    color: #555;
+    font-weight: bold;
+    padding: 5px 5px 5px 26px;
+    margin-left: -26px;
+    display: inline-block;
+    border: none;
+    outline: none;
+    width: calc(100% - 10px);
+}
+.table-component .table-toolbar .table-toolbar-item {
+    border: none;
+    outline: none;
+    color: #8898AA;
+    padding: 5px;
+}
+.table-component .table-title {
+    padding: 0px 24px;
+    margin: 10px 0px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.table-component .table-filter-wrapper {
+    padding: 0px 24px;
+    margin: 10px 0px 10px;
+}
+.table-component .table-filter-wrapper .form-group {
+    margin: 0;
+}
+.table-component .table-filter-wrapper .form-control-label {
+    height: 15px;
+    margin: 0px;
+    font-size: 0.7rem;
+}
+.table-component .table-filter-wrapper .form-control {
+    height: 30px;
+    font-size: 0.775rem;
+}
+.table-component .table-wrapper {
+    width: 100%;
+    max-height: 400px;
+    overflow: auto;
+}
+.table-wrapper table {
+    width: 100%;
+}
+.table-wrapper table th {
+    background-color: #EAEAEA;
+    color: #8898AA;
+}
+.table-wrapper table th {
+    position: sticky;
+    top: 0;
+    z-index: 8;
+    padding: 2px 4px;
+    font-size: 14px;
+}
+.table-wrapper table td {
+    padding: 8px 4px;
+    font-size: 14px;
+}
+.vertical-align-top .table-wrapper table td {
+    vertical-align: top;
+}
+.table-wrapper table th:first-of-type,
+.table-wrapper table td:first-of-type {
+    padding-left: 24px;
+}
+.table-wrapper table th:last-of-type,
+.table-wrapper table td:last-of-type {
+    padding-right: 24px;
+}
+.table-wrapper table tr:not(:last-child) td {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.table-component .table-pagination {
+    padding: 10px 24px;
+    text-align: right;
+}
+.table-component .table-pagination  .pagination{
+    margin-bottom: 0px;
+    display: inline-flex;
+}
+.table-pagination .page-item .page-link {
+    border: none;
+    background-color: transparent;
+}
+.table-pagination .page-item .page-link {
+    border: none;
+    background-color: transparent;
+    color: #636b6f;
+    font-weight: normal;
+    border-radius: 4px !important;
+    width: 28px;
+    height: 28px;
+}
+.table-pagination .page-item.active .page-link {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 2px 2px;
+    background-color: white;
+    color: #636b6f;
+    font-weight: bolder;
+}

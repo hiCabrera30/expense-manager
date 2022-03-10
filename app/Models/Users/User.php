@@ -57,4 +57,8 @@ class User extends Authenticatable {
     public function setPasswordAttribute($value) {
         $this->attributes["password"] = bcrypt($value);
     }
+
+    public function scopeExcept($query, $userID) {
+        return $query->where("users.id", "!=", $userID);
+    }
 }

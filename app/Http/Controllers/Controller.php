@@ -59,4 +59,9 @@ class Controller extends BaseController {
 
         return $collection->response()->getData();
     }
+    
+    protected function paginateBuilder($builder, $resource = null, $page_limit = null) {
+        $page_limit = $page_limit ?: (request()->page_limit ?: 10);
+        return $this->resolveResource($builder->paginate($page_limit), $resource);
+    }
 }

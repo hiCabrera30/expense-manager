@@ -9,6 +9,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/tables.css') }}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" async>
 
         <!-- Styles -->
         <style>
@@ -20,7 +22,7 @@
     </head>
     <body class="antialiased">
         @include('pages.includes.header')
-        <div class="relative flex items-top justify-center min-h-screen sm:items-center py-4 sm:pt-0">
+        <div class="relative items-top justify-center min-h-screen sm:items-center py-4 sm:pt-0">
             <div id="app">
                 <app inline-template>
                     <div>

@@ -42,7 +42,7 @@
             </table>
         </div>
         
-        <div class="table-pagination text-lg-right text-sm-center">
+        <div class="table-pagination text-sm-center">
             <data-table-pagination
                 v-if="(pagination.meta.last_page || pagination.meta.last) > 1"
                 :simplified="simplified"

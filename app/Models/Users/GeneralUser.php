@@ -2,17 +2,16 @@
 
 namespace App\Models\Users;
 
-use App\Models\Shops\Shop;
 use App\Traits\Users\RoleTrait;
 
-class Admin extends User {
+class GeneralUser extends User {
 
     use RoleTrait;
 
     public static function getRoleId() {
-        return 1;
+        return 2;
     }
-    
+
     /**
      * Get the class name for polymorphic relations.
      *
@@ -20,7 +19,7 @@ class Admin extends User {
      * @return string
      */
     public function getMorphClass() {
-        return 'Admin';
+        return 'GeneralUser';
     }
-    
+
 }
